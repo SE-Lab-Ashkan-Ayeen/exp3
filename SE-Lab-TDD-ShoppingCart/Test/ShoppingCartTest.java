@@ -63,37 +63,7 @@ public class ShoppingCartTest {
         cart.addItem("Book", 50);
         cart.updateItemPrice("Book", 80);
 
-        assertEquals(80.0, cart.getTotal()); // باید مجموع تغییر کند
-    }
-
-    @Test
-    public void testUpdateItemPrice_ShouldNotChangeCount() {
-        ShoppingCart cart = new ShoppingCart();
-
-        cart.addItem("Pen", 10);
-        cart.updateItemPrice("Pen", 20);
-
-        assertEquals(1, cart.getItemCount());
-    }
-
-    @Test
-    public void testUpdateItemPrice_ItemNotFound_ShouldDoNothing() {
-        ShoppingCart cart = new ShoppingCart();
-
-        cart.addItem("Notebook", 30);
-        cart.updateItemPrice("Eraser", 5);
-
-        assertEquals(30.0, cart.getTotal());
-    }
-
-    @Test
-    public void testUpdateItemPrice_ShouldChangePrice() {
-        ShoppingCart cart = new ShoppingCart();
-
-        cart.addItem("Book", 50);
-        cart.updateItemPrice("Book", 80);
-
-        assertEquals(80.0, cart.getTotal()); // باید مجموع تغییر کند
+        assertEquals(80.0, cart.getTotal());
     }
 
     @Test
