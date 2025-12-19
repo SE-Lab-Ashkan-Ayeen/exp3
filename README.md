@@ -42,3 +42,24 @@ public double getTotalWithDiscount() {
 
 1. **خطای منطقی:** کد از `>=` استفاده می‌کرد که باعث می‌شد تخفیف در مجموع 100 نیز اعمال شود، در حالی که باید فقط برای مقادیر بیشتر از 100 اعمال شود.
 2. **عدم تطابق با مشخصات:** تست انتظار داشت که در مجموع 100 تخفیف اعمال شود، اما مشخصات پروژه این را مجاز نمی‌داند.
+
+### پاسخ به پرسش دوم
+
+**آزمون نوشته شده برای کشف خطا:**
+
+تست زیر برای کشف این خطا نوشته شد:
+
+```java
+@Test
+public void testDiscountAtBoundary_corrected() {
+    ShoppingCart cart = new ShoppingCart();
+    cart.addItem("Item1", 50);
+    cart.addItem("Item2", 50);
+
+    double discounted = cart.getTotalWithDiscount();
+
+    assertEquals(100.0, discounted);
+}
+```
+
+این تست مشخص می‌کند که در مجموع دقیقا 100، نباید تخفیف اعمال شود و باید مقدار 100.0 برگردد.

@@ -44,6 +44,19 @@ public class ShoppingCartTest {
         assertEquals(108.0, discounted);
     }
 
+    // Test to discover the discount boundary bug
+    @Test
+    public void testDiscountAtBoundary_corrected() {
+        ShoppingCart cart = new ShoppingCart();
+        cart.addItem("Item1", 50);
+        cart.addItem("Item2", 50);
+
+        double discounted = cart.getTotalWithDiscount();
+
+        assertEquals(100.0, discounted);
+    }
+
+
 //    @Test
 //    public void testUpdateItemPrice_ShouldChangePrice() {
 //        ShoppingCart cart = new ShoppingCart();
