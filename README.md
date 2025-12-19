@@ -65,3 +65,35 @@ public void testDiscountAtBoundary_corrected() {
 ### پاسخ به پرسش سوم
 
 نوشتن آزمون پس از برنامه باعث می‌شود کد با قابلیت تست‌پذیری پایین طراحی شود و برنامه‌نویس دچار سوگیری تایید شده و ناخودآگاه آزمون‌ها را فقط برای اثبات درستی کد (نه یافتن باگ) بنویسد. همچنین این کار باعث می‌شود پوشش موارد لبه‌ای کاهش یافته و هزینه‌ی اصلاح خطاها به دلیل نیاز به بازنویسی بخش‌های اصلی بالا برود.
+
+
+---
+
+## بخش دوم: به‌کارگیری TDD
+
+### مراحل پیاده‌سازی `updateItemPrice`
+
+#### مرحله RED (قرمز)
+سه تست مربوط به `updateItemPrice` از حالت کامنت خارج شدند:
+1. `testUpdateItemPrice_ShouldChangePrice()` - بررسی تغییر قیمت
+2. `testUpdateItemPrice_ShouldNotChangeCount()` - بررسی عدم تغییر تعداد آیتم‌ها
+3. `testUpdateItemPrice_ItemNotFound_ShouldDoNothing()` - بررسی رفتار در صورت عدم وجود آیتم
+
+در این مرحله، تست‌ها به دلیل خالی بودن متد `updateItemPrice` شکست خوردند.
+
+#### مرحله GREEN (سبز)
+متد `updateItemPrice` پیاده‌سازی شد:
+
+```java
+public void updateItemPrice(String name, int newPrice) {
+    if (items.containsKey(name)) {
+        items.put(name, (double) newPrice);
+    }
+}
+```
+
+پس از این پیاده‌سازی، تمام تست‌ها پاس شدند.
+
+#### مرحله REFACTOR
+کد پیاده‌سازی شده ساده و واضح بود و نیاز به بازسازی خاصی نداشت. با این حال، اطمینان حاصل شد که تمام تست‌های قبلی هنوز پاس می‌شوند.
+
